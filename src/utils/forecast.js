@@ -15,11 +15,14 @@ const forecast = ({latitude, longitude} , callback) =>
             callback('No matching results');
         }
         else {
+            const highTemp = response.body.daily.data[0].temperatureHigh;
+            const lowTemp = response.body.daily.data[0].temperatureLow;
+            const sunriseTime = response.body.daily.data[0].sunriseTime;
             callback(undefined,response.body.daily.data[0].summary + ' It is currently ' + 
             response.body.currently.temperature + 
             ' degrees out.  There is a ' + 
              response.body.currently.precipProbability + 
-            '% chance of rain.' );
+            '% chance of rain.' + 'The High temperature ' + highTemp + ' and low temperature ' + lowTemp );
         }
     })
 }   
