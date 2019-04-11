@@ -5,6 +5,9 @@ const hbs = require('hbs');  // load up handle bars partials.
 const forecast = require('./utils/forecast.js');
 const geocode = require('./utils/geocode.js');
 
+const port = process.env.PORT || 3000;   
+// get the port from Heroku.  If run locally, it will set to 3000.
+
 const viewsPath = path.join(__dirname, '../templates/views');
 const partialsPath = path.join(__dirname,'../templates/partials');
 
@@ -126,6 +129,10 @@ app.get('*',(req, res) => {
 
 // start the server.  Just once, given the port.  
 // Asyncrhonous function
-app.listen(3000, () => {
+/*app.listen(3000, () => {    // Heroku will provide us with a port.
     console.log('Server is up on port 3000.');
+});*/
+
+app.listen(port, () => {    // Heroku will provide us with a port.
+    console.log('Server is up on port ' + port);
 });
