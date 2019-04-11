@@ -17,7 +17,6 @@ const forecast = ({latitude, longitude} , callback) =>
         else {
             const highTemp = response.body.daily.data[0].temperatureHigh;
             const lowTemp = response.body.daily.data[0].temperatureLow;
-            const sunriseTime = response.body.daily.data[0].sunriseTime;
             callback(undefined,response.body.daily.data[0].summary + ' It is currently ' + 
             response.body.currently.temperature + 
             ' degrees out.  There is a ' + 
